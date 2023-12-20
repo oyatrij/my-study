@@ -29,7 +29,7 @@ ORDINAL은 enum순서를 데이터베이스에 저장하고 STRING은 enum이름
   }
   ```
   ![image](https://github.com/oyatrij/my-study/assets/118187065/4a7fecb3-48c5-42f1-9264-289ecbf95ce6)
-  - 하지만 enum 데이터가 추가될 때 치명적인 오류를 발생할 수 있다. 새로 추가한 SUPER를 commit 하니 RoleType에 0이 입력되었다. row1에 입력된 0은 `ADMIN`을 의미하지만 row3의 0은 `SUPER`를 의미한다.
+  - 하지만 enum 데이터가 추가되거나 순서가 바뀔 때 치명적인 오류를 발생할 수 있다. 새로 추가한 SUPER를 commit 하니 RoleType에 0이 입력되었다. row1에 입력된 0은 `ADMIN`을 의미하지만 row3의 0은 `SUPER`를 의미한다.
 
   ```java
   public enum RoleType {

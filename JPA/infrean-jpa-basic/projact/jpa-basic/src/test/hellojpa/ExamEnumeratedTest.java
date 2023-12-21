@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExamEnumeratedTest {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction tx = em.getTransaction();
+
     @Test
     @Transactional
     public void enumTest() {
@@ -33,8 +36,8 @@ class ExamEnumeratedTest {
     @Test
     @Transactional
     public void testSave() {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        em = emf.createEntityManager();
+        tx = em.getTransaction();
         tx.begin();
 
         //팀1 저장
@@ -49,6 +52,32 @@ class ExamEnumeratedTest {
         //회원B 저장
         Member memberB = new Member(2L, "B");
         memberB.setTeam(team1);
+        em.persist(memberB);
+
+        tx.commit();
+        em.close();
+    }
+
+    @Test
+    @Transactional
+    public void testPureObject() {
+
+        tx.begin();
+
+        //팀1
+        Team team1 = new Team("tea1","팀1");
+        em.persist(team1);
+
+        Member memberA = new Member(1L,"A");
+
+        memberA.setTeam(team1);
+        team1.getMembers().add(memberA);
+        em.persist(memberA);
+
+        Member memberB = new Member(2L,"B");
+
+        memberB.setTeam(team1);
+        team1.getMembers().add(memberB);
         em.persist(memberB);
 
         tx.commit();

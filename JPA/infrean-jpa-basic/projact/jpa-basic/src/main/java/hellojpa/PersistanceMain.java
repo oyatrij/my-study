@@ -33,11 +33,11 @@ public class PersistanceMain {
             System.out.println("findMember.id = " + findMember.getId());
             System.out.println("findMember.name = " + findMember.getName());
 */
-            Member member1 = new Member(150L,"A");
+            /*Member member1 = new Member(150L,"A");
             Member member2 = new Member(160L, "B");
 
             em.persist(member1);
-            em.persist(member2);
+            em.persist(member2);*/
 
             System.out.println("==========");
 

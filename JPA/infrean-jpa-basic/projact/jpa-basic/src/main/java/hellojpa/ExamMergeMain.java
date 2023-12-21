@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 public class ExamMergeMain {
     public static void main(String[] args) {
-
+/*
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em1 = emf.createEntityManager();//영속성 컨텍스트 1 생성
@@ -28,6 +28,6 @@ public class ExamMergeMain {
         System.out.println("Name : " + result.getName());
         System.out.println("em2 commit");
         tx2.commit();
-        em2.close();
+        em2.close();*/
     }
 }

@@ -13,7 +13,7 @@ public class FlushMain {
         tx.begin();
 
         try {
-            Member member = new Member(400L, "member400");
+            Member member = new Member();
             em.persist(member);
             em.flush();
             System.out.println("===================");

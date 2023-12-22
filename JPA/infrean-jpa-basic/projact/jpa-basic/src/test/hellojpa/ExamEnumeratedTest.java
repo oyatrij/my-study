@@ -8,6 +8,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExamEnumeratedTest {
@@ -66,6 +68,7 @@ class ExamEnumeratedTest {
 
         //팀1
         Team team1 = new Team("tea1","팀1");
+        Team team2 = new Team("team2","팀2");
         em.persist(team1);
 
         Member memberA = new Member(1L,"A");
@@ -73,15 +76,20 @@ class ExamEnumeratedTest {
 
         memberA.setTeam(team1);
         memberB.setTeam(team1);
+        memberA.setTeam(team2);
 
+        List<Member> findMember = team1.getMembers();
+        for (Member member: findMember) {
+            System.out.println(member.getUsername());
+        }
         //Member entity의 리팩토링으로 밑 코드는 삭제한다.
         //team1.getMembers().add(memberA);
         //team1.getMembers().add(memberB);
-
+/*
         em.persist(memberA);
         em.persist(memberB);
 
         tx.commit();
-        em.close();
+        em.close();*/
     }
 }

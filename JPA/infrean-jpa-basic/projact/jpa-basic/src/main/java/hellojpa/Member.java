@@ -24,6 +24,10 @@ public class Member {
     }
 
     public void setTeam(Team team) {
+        //팀을 옮겼을 때 이전팀에서 제외시켜준다.
+        if (this.team != null) {
+            this.team.getMembers().remove(this);
+        }
         this.team = team;
         team.getMembers().add(this);
     }

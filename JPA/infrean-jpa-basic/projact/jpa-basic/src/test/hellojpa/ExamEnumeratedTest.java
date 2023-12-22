@@ -69,15 +69,16 @@ class ExamEnumeratedTest {
         em.persist(team1);
 
         Member memberA = new Member(1L,"A");
-
-        memberA.setTeam(team1);
-        team1.getMembers().add(memberA);
-        em.persist(memberA);
-
         Member memberB = new Member(2L,"B");
 
+        memberA.setTeam(team1);
         memberB.setTeam(team1);
-        team1.getMembers().add(memberB);
+
+        //Member entity의 리팩토링으로 밑 코드는 삭제한다.
+        //team1.getMembers().add(memberA);
+        //team1.getMembers().add(memberB);
+
+        em.persist(memberA);
         em.persist(memberB);
 
         tx.commit();

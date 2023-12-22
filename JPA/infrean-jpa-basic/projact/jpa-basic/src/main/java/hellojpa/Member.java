@@ -23,6 +23,11 @@ public class Member {
         this.username = username;
     }
 
+    public void setTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
+    }
+
     public long getId() {
         return id;
     }
@@ -43,8 +48,5 @@ public class Member {
         return team;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 }
 

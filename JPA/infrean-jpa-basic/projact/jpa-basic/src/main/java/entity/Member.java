@@ -10,6 +10,17 @@ public class Member {
 
     private String username;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> e0d6a41 (다대다 양방향 연관관계 Member, Team entity 추가)
+=======
+>>>>>>> 48984da (다대다 양방향 연관관계 Member, Team entity 추가)
+=======
+
+>>>>>>> 99b12c1 (push test)
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;

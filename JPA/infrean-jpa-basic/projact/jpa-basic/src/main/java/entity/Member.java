@@ -13,6 +13,7 @@ public class Member {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> e0d6a41 (다대다 양방향 연관관계 Member, Team entity 추가)
@@ -21,6 +22,9 @@ public class Member {
 =======
 
 >>>>>>> 99b12c1 (push test)
+=======
+
+>>>>>>> 4c4eccd70deee0aea21a83cbc24f9f929a7ede8f
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;

@@ -1,44 +1,15 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Member {
     @Id @Column(name = "MEMBER_ID")
     private String id;
-
     private String username;
-
-    /*
-    @ManyToMany
-    @JoinTable(
-        name = "MEMBER_PRODUCT",
-        joinColumns = @JoinColumn(name = "MEMBER_ID"),
-        inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
-    )
-    private List<Product> products = new ArrayList<Product>();*/
-
-    @ManyToMany
-    @JoinTable(
-        name = "MEMBER_PRODUCT",
-        joinColumns = @JoinColumn(name = "MEMBER_ID"),
-        inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
-    )
-    private List<Product> products = new ArrayList<Product>();
-
-    public void addProduct(Product product) {
-        this.products.add(product);
-        product.getMember().add(this);
-    }
-
-    public Member() {
-    }
-
-    public Member(String id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProductId;
 
     public String getId() {
         return id;
@@ -56,11 +27,11 @@ public class Member {
         this.username = username;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<MemberProduct> getMemberProductId() {
+        return memberProductId;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setMemberProductId(List<MemberProduct> memberProductId) {
+        this.memberProductId = memberProductId;
     }
 }

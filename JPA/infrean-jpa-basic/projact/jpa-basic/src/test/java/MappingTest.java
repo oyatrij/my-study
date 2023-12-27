@@ -1,4 +1,5 @@
 import entity.Member;
+import entity.MemberProduct;
 import entity.Product;
 import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ public class MappingTest {
 
     @Test
     public void manyToManyTest() {
-        tx.begin();
+        /*tx.begin();
 
         Product productA = new Product();
         productA.setId("productA");
@@ -60,12 +61,12 @@ public class MappingTest {
         em.persist(member1);
 
         tx.commit();
-        em.close();
+        em.close();*/
     }
 
     @Test
     public void find() {
-        tx.begin();
+        /*tx.begin();
 
         Member member = em.find(Member.class,"member1");
         System.out.println("sql시작");
@@ -75,12 +76,12 @@ public class MappingTest {
         }
 
         tx.commit();
-
+*/
     }
 
     @Test
     public void manyToManyBothTest() {
-        tx.begin();
+        /*tx.begin();
 
         Product productA = new Product();
         productA.setId("productA");
@@ -95,14 +96,41 @@ public class MappingTest {
         findInverse();
 
         tx.commit();
-        em.close();
+        em.close();*/
     }
 
     public void findInverse() {
-        Product product = em.find(Product.class,"productA");
+        /*Product product = em.find(Product.class,"productA");
         List<Member> members = product.getMember();
         for (Member member: members) {
             System.out.println("member = " + member.getUsername());
-        }
+        }*/
+    }
+
+    @Test
+    public void manyToManyIdClass() {
+        tx.begin();
+
+        //회원 저장
+        Member member1 = new Member();
+        member1.setId("member1");
+        member1.setUsername("회원1");
+        em.persist(member1);
+
+        //상품 저장
+        Product productA = new Product();
+        productA.setId("productA");
+        productA.setName("상품A");
+        em.persist(productA);
+
+        //회원상품 저장
+        MemberProduct memberProduct = new MemberProduct();
+        memberProduct.setMember(member1);
+        memberProduct.setProduct(productA);
+        memberProduct.setOrderAmount(2);
+        em.persist(memberProduct);
+
+        tx.commit();
+        em.close();
     }
 }

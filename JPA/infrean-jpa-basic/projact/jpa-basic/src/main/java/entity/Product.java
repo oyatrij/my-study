@@ -6,21 +6,10 @@ import java.util.List;
 
 @Entity
 public class Product {
-    @Id @Column(name = " PRODUCT_ID")
+    @Id @Column(name = "PRODUCT_ID")
     private String id;
 
     private String name;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Member> member = new ArrayList<Member>();
-
-    public List<Member> getMember() {
-        return member;
-    }
-
-    public void setMember(List<Member> member) {
-        this.member = member;
-    }
 
     public String getId() {
         return id;
@@ -37,4 +26,6 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

@@ -16,6 +16,11 @@ public class Team {
     @JoinColumn(name = "TEAM_ID")
     private List<Member> members = new ArrayList<Member>();
 
+
+    public Team(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return Id;
     }
@@ -32,11 +37,4 @@ public class Team {
         this.name = name;
     }
 
-    public List<Member> getMembers() {
-        return members;
-   }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
 }

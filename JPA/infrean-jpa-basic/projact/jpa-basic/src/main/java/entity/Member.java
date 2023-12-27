@@ -10,6 +10,17 @@ public class Member {
 
     private String username;
 
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
+    private Team team;
+
+    public Member() {
+    }
+
+    public Member(String username) {
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }

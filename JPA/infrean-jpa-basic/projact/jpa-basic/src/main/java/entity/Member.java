@@ -11,13 +11,27 @@ public class Member {
 
     private String username;
 
+    /*
     @ManyToMany
     @JoinTable(
-            name = "MEMBER_PRODUCT",
-            joinColumns = @JoinColumn(name = "MEMBER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
+        name = "MEMBER_PRODUCT",
+        joinColumns = @JoinColumn(name = "MEMBER_ID"),
+        inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
+    )
+    private List<Product> products = new ArrayList<Product>();*/
+
+    @ManyToMany
+    @JoinTable(
+        name = "MEMBER_PRODUCT",
+        joinColumns = @JoinColumn(name = "MEMBER_ID"),
+        inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
     )
     private List<Product> products = new ArrayList<Product>();
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+        product.getMember().add(this);
+    }
 
     public Member() {
     }

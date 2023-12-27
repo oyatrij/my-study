@@ -1,6 +1,5 @@
 import entity.Member;
 import entity.Product;
-import entity.Team;
 import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,7 @@ public class MappingTest {
     EntityTransaction tx = em.getTransaction();
     @Test
     public void oneToManyTest() {
-        EntityManager em = emf.createEntityManager();
+        /*EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
@@ -30,7 +29,7 @@ public class MappingTest {
         em.persist(team1);  //INSERT team1
                             //UPDATE member1 FK, UPDATE member2 FK
                             //UPDATE 추가 발생
-        tx.commit();
+        tx.commit();*/
     }
 
     @Test
@@ -77,5 +76,33 @@ public class MappingTest {
 
         tx.commit();
 
+    }
+
+    @Test
+    public void manyToManyBothTest() {
+        tx.begin();
+
+        Product productA = new Product();
+        productA.setId("productA");
+        productA.setName("상품A");
+        em.persist(productA);
+
+        Member member1 = new Member("member1");
+        member1.setUsername("회원1");
+        member1.addProduct(productA);
+        em.persist(member1);
+
+        findInverse();
+
+        tx.commit();
+        em.close();
+    }
+
+    public void findInverse() {
+        Product product = em.find(Product.class,"productA");
+        List<Member> members = product.getMember();
+        for (Member member: members) {
+            System.out.println("member = " + member.getUsername());
+        }
     }
 }

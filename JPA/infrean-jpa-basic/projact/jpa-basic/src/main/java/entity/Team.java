@@ -1,3 +1,4 @@
+/*
 package entity;
 
 import javax.persistence.*;
@@ -38,3 +39,4 @@ public class Team {
     }
 
 }
+*/

@@ -1,14 +1,13 @@
+import com.sun.org.apache.xpath.internal.operations.Or;
 import entity.Member;
-import entity.MemberProduct;
+import entity.Order;
 import entity.Product;
-import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class MappingTest {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -109,7 +108,7 @@ public class MappingTest {
 
     @Test
     public void manyToManyIdClass() {
-        tx.begin();
+        /*tx.begin();
 
         //회원 저장
         Member member1 = new Member();
@@ -131,6 +130,34 @@ public class MappingTest {
         em.persist(memberProduct);
 
         tx.commit();
+        em.close();*/
+    }
+
+    @Test
+    public void manyToManyOrder() {
+        tx.begin();
+
+        //회원추가
+        Member member1 = new Member();
+        member1.setId("member1");
+        member1.setUsername("회원1");
+        em.persist(member1);
+
+        //상품 추가
+        Product productA = new Product();
+        productA.setId("productA");
+        productA.setName("상품A");
+        em.persist(productA);
+
+        //주문 추가
+        Order order = new Order();
+        order.setMember(member1);
+        order.setProduct(productA);
+        order.setOrderCount(1);
+        em.persist(order);
+
+        tx.commit();
+
         em.close();
     }
 }

@@ -1,10 +1,10 @@
-package entity;
+package extendEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
+//@MappedSuperclass
 public abstract class BaseEntity {
     @Id @GeneratedValue
     private Long id;

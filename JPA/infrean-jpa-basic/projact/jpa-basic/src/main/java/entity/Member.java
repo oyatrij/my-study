@@ -1,15 +1,16 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Member {
     @Id @Column(name = "MEMBER_ID")
     private String id;
     private String username;
     @OneToMany(mappedBy = "member")
-    private List<MemberProduct> memberProductId;
+    private List<Order> order = new ArrayList<Order>();
 
     public String getId() {
         return id;
@@ -27,11 +28,11 @@ public class Member {
         this.username = username;
     }
 
-    public List<MemberProduct> getMemberProductId() {
-        return memberProductId;
+    public List<Order> getOrder() {
+        return order;
     }
 
-    public void setMemberProductId(List<MemberProduct> memberProductId) {
-        this.memberProductId = memberProductId;
+    public void setOrder(List<Order> order) {
+        this.order = order;
     }
 }

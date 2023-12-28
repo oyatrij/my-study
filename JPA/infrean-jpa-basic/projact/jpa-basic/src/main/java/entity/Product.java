@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Product {
     @Id @Column(name = "PRODUCT_ID")
     private String id;
@@ -26,6 +26,5 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

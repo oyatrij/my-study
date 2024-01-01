@@ -2,7 +2,7 @@ package oneToOne;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class BoardDetail {
 
     @Id

@@ -1,4 +1,4 @@
-# fetch 속성 기본설정값
+# fetch 속성 기본설정 값
 - 엔티티가 하나면 즉시로딩, 컬렉션이면 지연로딩
 - @ManyToOne, @OneToOne: 즉시로딩(FetchType.EAGER)
 - @OneToMany, @ManyToMany: 지연로딩(FetchType.LAZY)

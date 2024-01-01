@@ -3,7 +3,7 @@ package lazyloading;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Member {
 
     @Id @GeneratedValue

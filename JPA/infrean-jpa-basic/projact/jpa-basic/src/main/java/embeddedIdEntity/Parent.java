@@ -3,7 +3,7 @@ package embeddedIdEntity;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Parent {
     @EmbeddedId
     private ParentId id;

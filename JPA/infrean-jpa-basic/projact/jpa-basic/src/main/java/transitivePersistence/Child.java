@@ -2,7 +2,7 @@ package transitivePersistence;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class Child {
 
     @Id @GeneratedValue

@@ -43,8 +43,7 @@ public class JpqlTest {
     public void jpqlQueryTest() {
         //Query
         String jpql=  "SELECT m.username, m.age from Member m";
-        Query query = em.createQuery(jpql);
-        List resultList = query.getResultList();
+        List resultList = em.createQuery(jpql).getResultList();
 
         for (Object o : resultList) {
             Object[] result = (Object[]) o;
@@ -61,8 +60,9 @@ public class JpqlTest {
         *   query 에서 :username 을 작성하고 setParameter("username", usernameParam) 를 통해 :username 에 usernameParam 을 바인딩 한다.
         * */
         String usernameParam = "회원1";
-        TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m where m.username = :username", Member.class);
-        query.setParameter("username", usernameParam);
-        List<Member> result = query.getResultList();
+        String query = "SELECT m FROM Member m where m.username = :username";
+        List<Member> result = em.createQuery(query, Member.class)
+                .setParameter("username", usernameParam)
+                .getResultList();
     }
 }

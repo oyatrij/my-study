@@ -52,4 +52,17 @@ public class JpqlTest {
             System.out.println("age = " + result[1]);
         }
     }
+
+    @Test
+    public void namedParamTest() {
+        /*
+        * 1. Parameter binding
+        * 1.1. Named parameters
+        *   query 에서 :username 을 작성하고 setParameter("username", usernameParam) 를 통해 :username 에 usernameParam 을 바인딩 한다.
+        * */
+        String usernameParam = "회원1";
+        TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m where m.username = :username", Member.class);
+        query.setParameter("username", usernameParam);
+        List<Member> result = query.getResultList();
+    }
 }

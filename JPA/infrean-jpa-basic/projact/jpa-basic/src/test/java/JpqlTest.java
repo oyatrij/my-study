@@ -120,4 +120,15 @@ public class JpqlTest {
         List<UserDTO> resultList = createQuery.getResultList();
         System.out.println(resultList.toString());
     }
+
+    @Test
+    public void pagingTest() {
+        TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m ORDER BY m.username DESC", Member.class);
+        query.setFirstResult(10);
+        query.setMaxResults(20);
+        List<Member> results = query.getResultList();
+        for (Member m : results) {
+            System.out.println(m.toString());
+        }
+    }
 }

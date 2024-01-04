@@ -131,4 +131,12 @@ public class JpqlTest {
             System.out.println(m.toString());
         }
     }
+
+    @Test
+    public void namedQueryTest() {
+        List<Member> resultList =
+                em.createNamedQuery("Member.findByUsername", Member.class)
+                        .setParameter("username", "회원1")
+                        .getResultList();
+    }
 }

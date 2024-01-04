@@ -1,9 +1,11 @@
 import embeddedtype.Address;
 import jpql.Member;
 import jpql.Team;
+import jpql.UserDTO;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -88,5 +90,34 @@ public class JpqlTest {
             System.out.println("Street = " + address.getStreet());
             System.out.println("zipcode = " + address.getZipcode());
         }
+    }
+
+    @Test
+    public void beforeNewKeyword() {
+        String query = "SELECT m.username, m.age FROM Member m";
+        //프로젝션을 엔티티가아닌 여러개의 값으로 조회하게되면 TypedQuery를 사용할 수 없다.
+        List<Object[]> resultList = em.createQuery(query)
+                .getResultList();
+
+        List<UserDTO> userDTO = new ArrayList<UserDTO>();
+
+        //객체 변환 작업
+        for (Object[] o : resultList) {
+            UserDTO dto = new UserDTO();
+            dto.setUsername((String) o[0]);
+            dto.setAge((int) o[1]);
+            System.out.println(dto.toString());
+            userDTO.add(dto);
+
+        }
+    }
+
+    @Test
+    public void newKeywordTest(){
+        //new 키워드를 사용하여 UserDTO의 생성자로 조회하면 UserDTO 타입으로 TypedQuery를 사용할 수 있다.
+        String query = "SELECT new jpql.UserDTO(m.username, m.age) FROM Member m";
+        TypedQuery<UserDTO> createQuery = em.createQuery(query, UserDTO.class);
+        List<UserDTO> resultList = createQuery.getResultList();
+        System.out.println(resultList.toString());
     }
 }

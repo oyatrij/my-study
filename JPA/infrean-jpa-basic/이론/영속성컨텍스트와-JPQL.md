@@ -11,7 +11,7 @@ select o.address from Order o //관리x
 select m.id, m.username from Member m //관리x
 ```
 
-#  영속성 컨텍스트와 엔티티
+# 영속성 컨텍스트와 엔티티
 조회대상이 엔티티일 경우에만 영속성컨텍스트에서 관리한다고 했다.<br>
 그럼 영속성 컨텍스트에 `회원1`이 존재할 때 JPQL로 `회원1`을 다시 조회하면 어떻게 될까?<br>
 
@@ -39,6 +39,7 @@ select m.id, m.username from Member m //관리x
   - 영속석 컨텍스트에 값이 있든 없든 항상 DB에서 조회한다.
 
 # JPQL과 flush
+[영속성 컨텍스트와 엔티티](#영속성-컨텍스트와-엔티티)
 
 
 

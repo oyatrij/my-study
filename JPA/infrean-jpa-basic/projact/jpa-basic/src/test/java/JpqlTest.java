@@ -1,4 +1,6 @@
+import embeddedtype.Address;
 import jpql.Member;
+import jpql.Team;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
@@ -13,10 +15,13 @@ public class JpqlTest {
     @Test
     public void insertTest() {
         tx.begin();
+        Team team = new Team();
 
         Member member = new Member();
         member.setUsername("회원1");
         member.setAge(19);
+        member.setHomeAddress(new Address("서울", "천호대로 39길 46", "123-123"));
+        member.setTeam(team);
         em.persist(member);
 
         tx.commit();
@@ -43,7 +48,7 @@ public class JpqlTest {
     public void jpqlQueryTest() {
         //Query
         String jpql=  "SELECT m.username, m.age from Member m";
-        List resultList = em.createQuery(jpql).getResultList();
+        List<Object[]> resultList = em.createQuery(jpql).getResultList();
 
         for (Object o : resultList) {
             Object[] result = (Object[]) o;
@@ -64,5 +69,24 @@ public class JpqlTest {
         List<Member> result = em.createQuery(query, Member.class)
                 .setParameter("username", usernameParam)
                 .getResultList();
+    }
+
+    @Test
+    public void entityProjection() {
+        String query = "SELECT m.team FROM Member m";
+        List result = em.createQuery(query)
+                .getResultList();
+    }
+
+    @Test
+    public void embeddedProjection() {
+        String query = "SELECT m.homeAddress FROM Member m";
+        List<Address> addresses = em.createQuery(query, Address.class)
+                .getResultList();
+        for (Address address: addresses) {
+            System.out.println("city = " + address.getCity());
+            System.out.println("Street = " + address.getStreet());
+            System.out.println("zipcode = " + address.getZipcode());
+        }
     }
 }

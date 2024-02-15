@@ -7,6 +7,7 @@ TIL, 백문이불여일타 맹신 Repository
 # 2024 계획
 1. Toby's spring 완주
 2. 알고리즘
+3. WanQ 출시
 
 
 

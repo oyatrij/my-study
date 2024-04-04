@@ -58,3 +58,9 @@ public class UserService {
   private MemberService memberService;
 }
 ```
+<br><br>
+### Filter란?
+Request가 DespatcherSevlet에 도달하기 전, 후에 동작하며 주로 인증, 권한 체크 등을 하는데 사용됩니다.<br>
+- init(): 필터가 생성될 때 수행
+- doFilter(): Request, Response가 필터를 거칠 때 수행
+- destroy(): 필터가 소멸될 때 수행행

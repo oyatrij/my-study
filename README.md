@@ -6,7 +6,7 @@ TIL, 백문이불여일타 맹신 Repository
 3. [Interview](https://github.com/oyatrij/my-study/tree/main/Interview)
 
 # 2024 계획
-1. Toby's spring 완주
+1. 출,퇴근 길 Toby's spring 완주
 2. 알고리즘
 3. WanQ 출시
 

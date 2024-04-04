@@ -63,4 +63,11 @@ public class UserService {
 Request가 DespatcherSevlet에 도달하기 전, 후에 동작하며 주로 인증, 권한 체크 등을 하는데 사용됩니다.<br>
 - init(): 필터가 생성될 때 수행
 - doFilter(): Request, Response가 필터를 거칠 때 수행
-- destroy(): 필터가 소멸될 때 수행행
+- destroy(): 필터가 소멸될 때 수행
+<br><br>
+
+### Dispatcher servlet 이란?
+HTTP로 들어오는 모든 요청을 받아 적합한 컨트롤러에 위임해주는 프론트 컨트롤러입니다.<br>
+@RequsetMapping 어노테이션에 설정된 controller에 위임합니다.
+
+

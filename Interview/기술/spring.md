@@ -4,6 +4,7 @@
 
 ### Spring MVC란?
 SpringMVC는 Spring framework 의 model-view-controller 구조를 이용해 웹 애플리케이션을 개발하는 프레임워크입니다. 동작방식은 request가 들어오게되면 filter를 거처 dispatcher servlet(front controller)가 HandlerMapping에 던지게됩니다. HandlerMapping은 request에 적합한 controller를 찾아 연결하고 DispatcherServlet으로 돌아와 HandlerAdapter로 요청합니다. HanderAdapter는 controller의 메소드들 중 적합한 메소드를 매칭하고 ViewResolver를 통해 적합한 View를 찾아 반환합니다.
+<br><br>
 
 ### 객체지향 프로그래밍이란?
 현실 세계에 존자하는 객체를 소프트웨어에 표현하는 프로그래밍 기법입니다.<br>

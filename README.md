@@ -1,4 +1,4 @@
-# Study repository✏️
+# ✏️Study repository
 TIL, 백문이불여일타 맹신 Repository
 ## 목차
 1. [JAVA](https://github.com/oyatrij/my-study/tree/main/JAVA)

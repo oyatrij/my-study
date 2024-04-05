@@ -2,6 +2,9 @@
 자바 및 코틀린 개발을 편리하게 해주는 오픈소스 프레임워크로 IOC, DI, AOP 등의 특징을 가지고 있습니다.
 <br><br>
 
+### Spring MVC란?
+SpringMVC는 Spring framework 의 model-view-controller 구조를 이용해 웹 애플리케이션을 개발하는 프레임워크입니다. 동작방식은 request가 들어오게되면 filter를 거처 dispatcher servlet(front controller)가 HandlerMapping에 던지게됩니다. HandlerMapping은 request에 적합한 controller를 찾아 연결하고 DispatcherServlet으로 돌아와 HandlerAdapter로 요청합니다. HanderAdapter는 controller의 메소드들 중 적합한 메소드를 매칭하고 ViewResolver를 통해 적합한 View를 찾아 반환합니다.
+
 ### 객체지향 프로그래밍이란?
 현실 세계에 존자하는 객체를 소프트웨어에 표현하는 프로그래밍 기법입니다.<br>
 객체지향의 특징은 캡슐화, 정보은닉, 상속, 다형성이 있습니다.
@@ -85,10 +88,14 @@ Request가 DespatcherSevlet에 도달하기 전, 후에 동작하며 주로 인�
 - destroy(): 필터가 소멸될 때 수행
 <br><br>
 
+### Interceptor란?
+Filter와 비슷하지만 Interceptor는 Dispatcher Servlet 이 실행된 후에 호출되고 스프링컨테이너에서 관리되기 때문에 모든 Bean에 접근할 수 있다는 특징이 있습니다.
+
 ### Dispatcher servlet 이란?
 HTTP로 들어오는 모든 요청을 받아 적합한 컨트롤러에 위임해주는 프론트 컨트롤러입니다.<br>
 @RequsetMapping 어노테이션에 설정된 controller에 위임합니다.
 <br><br>
+
 ### Bean scope란?
 빈이 존재할 수 있는 범위를 이야기합니다.<br>
 - 싱글톤: 디폴트 스코프로 스프링 컨테이너의 시작과 종료까지 유지되는 가장 넓은 범위의 스코프입니다.

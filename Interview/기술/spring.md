@@ -69,7 +69,7 @@ Request가 DespatcherSevlet에 도달하기 전, 후에 동작하며 주로 인�
 ### Dispatcher servlet 이란?
 HTTP로 들어오는 모든 요청을 받아 적합한 컨트롤러에 위임해주는 프론트 컨트롤러입니다.<br>
 @RequsetMapping 어노테이션에 설정된 controller에 위임합니다.
-
+<br><br>
 ### Bean scope란?
 빈이 존재할 수 있는 범위를 이야기합니다.<br>
 - 싱글톤: 디폴트 스코프로 스프링 컨테이너의 시작과 종료까지 유지되는 가장 넓은 범위의 스코프입니다.

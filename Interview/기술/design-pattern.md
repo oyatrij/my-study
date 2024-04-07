@@ -27,3 +27,35 @@ class Singleton {
 ## 2. 구조패턴
 ### 프록시
 ## 3. 행위패턴
+### 전략패턴
+```java
+public abstract class Animal {
+  public abstract String getName();
+}
+
+public class Mouse extends Animal {
+  private String name = "쥐";
+  public void getName() {
+    return name;
+  }
+}
+
+public class cat extends Animal {
+  private String name = "고양이";
+  public void getName
+}
+
+public class DoorMan {
+  public void 쫒아내(Mouse m) {
+
+  }
+}
+
+public class App {
+  public static void main(String[] args) {
+    
+  }
+}
+
+public void 
+```

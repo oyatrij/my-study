@@ -98,3 +98,8 @@ HTTP로 들어오는 모든 요청을 받아 적합한 컨트롤러에 위임해
 @Scope("singleton")
 @Scope("prototype")
 ```
+<br><br>
+
+### @Transactional
+@Transactional은 Spring Framework에서 제공하는 어노테이션으로 메서드나 클래스 레벨에서 트랜잭션을 선언하는데 사용됩니다.<br>
+@Transactional은 자동롤벡 기능을 지원합니다. 해당 어노테이션이 선언된 레벨에서 예외가 발생하면 트랜젝션을 롤백합니다. 

@@ -7,3 +7,17 @@ Header는 다음 네 가지로 나뉩니다.
 - Request Header
 - Response Header
 - Entity Header
+<br><br>
+
+### REST란?
+HTTP 요청을 보낼 때 URI로는 자원을, HTTP Method로는 행위를 표현한 client와 server의 통신 스타일입니다.
+<br><br>
+
+### HTTP method 중에서 PUT과 PATCH의 차이는?
+PUT과 PATCH 모두 Update를 위한 Http method입니다.<br>
+PUT으로 업데이트 시 데이터 전체가 덮어 쓰여지게되어 갱신되고, PATCH는 일부분만 수정되어집니다.<br>
+<br><br>
+
+### 멱등성이란?
+연산을 여러 번 해도 결과가 달라지지 않는 성질이며 GET 요청은 멱등성이 지켜지지만 POST는 수행할 때 결과가 달라지므로 멱등성이 지켜지지않습니다.
+<br><br>

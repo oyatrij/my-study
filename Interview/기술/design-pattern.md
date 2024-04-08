@@ -63,4 +63,28 @@ public class Client {
 **전략패턴**은 이러한 문제를 해결하기 위해 사용됩니다.<br>
 
 #### 전략패턴의 활용
+- 전략생성
+&nbsp;현재 개발하려고하는 교통수단은 선로와 도로 두가지 방식이 있습니다. 움직이는 방식에 대한 **Strategy**클래스를 생성합니다.
+```java
+//MovableStrategy Interface
+public interface MoveableStrategy {
+  public void move();
+}
+
+//선로이용기능
+public void RailLoadStrategy implements MoveableStrategy {
+  @Override
+  public void move() {
+    
+  }
+}
+
+//도로이용기능
+public void LoadStrategy implements MoveableStrategy {
+  @Override
+  public void move() {
+    
+  }
+}
+```
 

@@ -64,7 +64,7 @@ public class Client {
 
 #### 전략패턴의 활용
 - 전략생성
-&nbsp;현재 개발하려고하는 교통수단은 선로와 도로 두가지 방식이 있습니다. 움직이는 방식에 대한 **Strategy**클래스를 생성합니다.
+&nbsp;현재 개발하려고하는 교통수단의 이동 방법은 선로와 도로, 두가지 방식이 있습니다. 움직이는 방식에 대한 **Strategy**클래스를 생성합니다.
 ```java
 //MovableStrategy Interface
 public interface MoveableStrategy {
@@ -72,19 +72,69 @@ public interface MoveableStrategy {
 }
 
 //선로이용기능
-public void RailLoadStrategy implements MoveableStrategy {
+public class RailLoadStrategy implements MoveableStrategy {
   @Override
   public void move() {
-    
+    System.out.println("선로이용");
   }
 }
 
 //도로이용기능
-public void LoadStrategy implements MoveableStrategy {
+public class LoadStrategy implements MoveableStrategy {
   @Override
   public void move() {
-    
+    System.out.println("도로이용");
+  }
+}
+
+//다른 기능 추가
+...
+
+```
+
+이제 운송 수단에 대한 클래스를 정의 합니다. 어떻게 움직일 것인지에 대한 전략을 설정하여, 그 전략의 움직임 방식을 사용하여 움직이도록 합니다.
+```java
+public class Moving {
+  private MovableStrategy movableStrategy;
+  public void move(){
+    movableStrategy.move();
+  }
+  public void setMovableStrategy(MovableStrategy movablestrategy) {
+    this.movableStrategy = movableStrategy;
+  }
+}
+
+public class Bus extends Moving {
+  
+}
+
+public class Train extends Moving {
+
+}
+```
+
+이제 Train과 Bus객체를 사용하는 Client를 구현합니다.<br>
+각 운송 수단을 생성하고 운송 수단들이 어떤 방식으로 움직이는지에 대한 방식을 **setMovableStrategy()** 메서드를 통해 설정합니다.
+```java
+public class Client {
+  public static void main(String args[]) {
+    Moving train = new Train();
+    Moving bus = new Bus();
+
+    //기차는 선로를 이용하고, 버스는 도로를 이용한다.
+    train.setMovableStrategy(new RailLoadStrategy());
+    bus.setMovableStrategy(new LoadStrategy());
+
+    train.move();
+    bus.move();
+
+    //버스의 이동방식이 선로로 바뀌었다.
+    bus.setMovableStrategy(new RailLoadStrategy())
   }
 }
 ```
+버스의 이동방식이 선로로 바뀌었지만 인터페이스와 클래스에서는 수정을 하지않아 OPC원칙을 지켜냈습니다.<br>
+또, 행위가 추가되어도 추가된 행위에 대한 클래스를 개발하여 확장에 대해서는 열려있게 되어 OPC원칙을 지켰습니다.<br>
+다시 한 번 정리하자면 전략패턴은 객체의 행위를 캡슐화하고 객체의 행위를 변경할 때 행위를 수정하지않고 객체가 행위를 변경하여 개발하는 디자인 패턴입니다. 
+
 

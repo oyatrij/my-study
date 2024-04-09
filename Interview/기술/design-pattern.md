@@ -21,8 +21,56 @@ class Singleton {
   }
 }
 ```
-### 팩토리
-- 
+### 팩토리 메소드
+- 객체 생성을 공장(Factory)클래스로 캡슐화하여 생성하게 하는 생성 디자인 패턴이다.
+- 클라이언트에서 직접 `new`연산자를 통해 인스턴스화 하는게 아닌 캡슐화 한 클래스의 메서드에서 인스턴스화 하여 생성을 각각 책임지는 것이다.
+- 인스턴스화에 필요한 전,후처리를 가능하게 하여 객체를 유연하게 생성할 수 있습니다.
+#### 팩토리 메서드 패턴 구조
+- Creator: 최상위 공장 클래스로서, 팩토리 메서드를 추상화하여 서브클래스에서 구현하도록 합니다.
+  - someOperation(객체 생성 처리 메서드): 객체 생성에 관한 전,후 처리를 템플릿화 한 메소드
+  - createProduct(팩토리 메서드): 서브 공장 클래스에서 재정의할 객체 생성 추상 메서드
+- ConcreteCreator: 각 서브 공장 클래스는 해당하는 제품 객체를 반환하도록 생성 추상메서드를 재정의 합니다.
+- Product: 제품 구현체를 추상화합니다.
+- ConcreteProduct: 제품 구현체입니다.
+<br>
+팩토리 메소드 패턴은 객체를 만들어내는 공장을 만드는 패턴입니다. 클래스의 인스턴스는 미리 정의한 공장의 서브클래스에서 결정합니다. 팩토리 메소드 패턴으로 구성하게 되면 객체간의 결합도가 낮아지고 유지보수에 용이해집니다.
+
+#### 구현
+- 제품(Product)클래스
+```java
+//제품 추상화
+public interface IProduct {
+  void setting();
+}
+
+//제품 구현체
+public class ConcreteProductA implement IProduct {
+  @Override
+  public void setting() {
+  }
+}
+
+public class ConcreteProductB implement IProduct {
+  @Override
+  public void setting() {
+  }
+}
+```
+- 공장(Factory)클래스
+```java
+abstract class AbstractFactory {
+  // 객체 생성 전,후처리 메소드 (final을 적용하여 오버라이딩 방지, 템플릿화)
+  final IProduct createOperation() {
+    IProduct product = createProduct();
+    product.setting 
+  }
+
+  //팩토리 메소드: 구체적인 객체 생성 종류는 각 서브클래스에 위임한다.
+  //Protected를 정용하여 때문에 외부에 노출되지 않게 한다.
+  abstract protected IProduct createProduct();
+}
+
+```
 
 ## 2. 구조패턴
 ### 프록시
